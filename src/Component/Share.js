@@ -1,20 +1,61 @@
-import React from "react";
-import img from "../Images/Danish.jpg";
+import React, { useContext, useRef, useState } from "react";
+import img from "../Images/Ava.jfif";
+import { AuthContext } from "../Context/AuthContext";
+import axios from 'axios'
 function Share() {
+  const {user} =useContext(AuthContext);
+  const [file,setFile]=useState([]);
+  const msg=useRef();
+
+  const handleSubmit=async(e)=>{
+       e.preventDefault();
+       console.log(user._id);
+       console.log("Message is "+msg.current.value)
+       const newPost={
+        userId:user._id,
+        desc:msg.current.value
+       }
+
+       if(file)
+       {
+          const data=new FormData();
+          const filename=Date.now()+file.name;
+          data.append('file',file);
+          data.append('userId',user._id);
+          data.append('desc',msg.current.value)
+          console.log("The file name i "+filename)
+          try {
+          await  axios.post('http://localhost:8000/upload', data, {
+  headers: {
+    'Content-Type': 'multipart/form-data',
+  },
+});
+          } catch (error) {
+            console.log("Error in file uploding")
+          }
+       }
+
+      //  try {
+      //   await axios.post('http://localhost:8000/post/',newPost);
+      //  } catch (error) {
+      //   console.log("Error in posting")
+      //  }
+  }
   return (
     <>
-      <div className="p-4 m-4 share-Div">
+      <form className="p-4 m-4 share-Div" onSubmit={(e)=>{handleSubmit(e)}}>
         <div className="flex ">
-          <img className="w-12 h-12 mr-3 rounded-full" src={img} alt="" />
+          <img className="w-12 h-12 mr-3 rounded-full" src={user.profile?user.profile:img} alt="" />
           <input
             className="w-full bg-transparent outline-none"
             type="text"
-            placeholder="Whats in your mind"
+            placeholder={`What's in your mind ${user.username} ?`}
+            ref={msg}
           />
         </div>
         <hr className="my-3 font-bold" />
         <div className="flex">
-          <div className="flex items-center mr-6">
+          <label htmlFor="file" className="flex items-center mr-6">
             <svg
               class="w-6 h-6 text-white dark:text-white"
               aria-hidden="true"
@@ -42,7 +83,8 @@ function Share() {
               />
             </svg>
             <span className="ml-2 text-sm">Video or Photo</span>
-          </div>
+            <input type="file" id="file" accept=".jpg, .jpeg,.png" onChange={(e)=>{setFile(e.target.files[0])}} className=" hidden"/>
+          </label>
           <div className="flex items-center mr-6">
             <svg
               class="w-6 h-6 text-white dark:text-white"
@@ -79,11 +121,11 @@ function Share() {
             </svg>
             <span className="ml-2 text-sm">Feeling</span>
           </div>
-          <button className="feedBtn ml-4 py-3 rounded-md font-bold px-5">
+          <button type="submit" className="feedBtn ml-4 py-3 rounded-md font-bold px-5">
             Send
           </button>
         </div>
-      </div>
+      </form>
     </>
   );
 }

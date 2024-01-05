@@ -1,6 +1,9 @@
-import img from "../Images/Sohail.png";
-
+import img from "../Images/Ava.jfif";
+import {useContext} from 'react';
+import {AuthContext} from '../Context/AuthContext';
+import {Link} from 'react-router-dom'
 function Navbar() {
+  const {user}=useContext(AuthContext);
   return (
     <>
       <div className="navbar sticky top-0 flex items-center px-4 z-10">
@@ -94,7 +97,10 @@ function Navbar() {
             </div>
           </div>
           <div className="profile rounded-full overflow-hidden ">
+            <Link to={`/profile/${user._id}`}>
+            
             <img src={img} className="w-10 profileImg h-10 bg-cover" alt="" />
+            </Link>
           </div>
         </div>
       </div>

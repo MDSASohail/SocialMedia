@@ -1,13 +1,17 @@
 import imgpr from "../Images/Ava.jfif";
 import {Link} from 'react-router-dom'
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Context/AuthContext";
 
 // import full from "../Images/full.jpeg";
 function Post({post}) {
-  const {img,userId,likes,desc,like,comment}=post;
-  const [liked,setLike]=useState(false);
+  const {img,userId,likes,desc,comment}=post;
+  const [isLiked,setIsLike]=useState(false);
   const [userdata,setUserdata]=useState('');
+  const {user}=useContext(AuthContext);
+  const [like,setLike]=useState(post.likes.length)
+  console.log("Like di s "+like)
   useEffect(()=>{
     const getuserName=async ()=>{
       const data=await axios.get(`http://localhost:8000/user/get/${post.userId}`);
@@ -18,6 +22,22 @@ function Post({post}) {
     getuserName();
     
   },[post])
+console.log("Uploded image full url "+post.img)
+ async function LikedFun()
+  {
+              try {
+                await axios.put(`http://localhost:8000/post/like/${post._id}`,{userId:user._id});
+                setLike(isLiked?like+1:like-1);
+                setIsLike(!isLiked);
+              } catch (error) {
+                
+                
+              }
+              
+  }
+ useEffect(()=>{
+  setIsLike(post.likes.includes(user._id));
+ },[post.likes,user._id])
   return (
     <>
       <div className="postDiv m-4 p-4">
@@ -44,7 +64,7 @@ function Post({post}) {
         </div>
         <div className="mt-2">{desc}</div>
         <div className="my-2">
-          <img className="h-96 mx-auto " src={post.img22? img : imgpr} alt="" />
+          <img className="h-96 mx-auto " src={post.img? `http://localhost:8000/${post.img}` : imgpr} alt="" />
         </div>
 
         <div className="flex justify-between mt-3 items-center">
@@ -70,7 +90,7 @@ function Post({post}) {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 20 20"
-             onClick={()=>{setLike(!liked)}}
+             onClick={()=>{LikedFun()}}
             >
               <path
                 stroke="currentColor"
@@ -80,7 +100,7 @@ function Post({post}) {
                 d="M4.008 8.714c1-.097 1.96-.45 2.792-1.028a25.112 25.112 0 0 0 4.454-5.72 1.8 1.8 0 0 1 .654-.706 1.742 1.742 0 0 1 1.65-.098 1.82 1.82 0 0 1 .97 1.128c.075.248.097.51.065.767l-1.562 4.629M4.008 8.714H1v9.257c0 .273.106.535.294.728a.99.99 0 0 0 .709.301h1.002a.99.99 0 0 0 .71-.301c.187-.193.293-.455.293-.728V8.714Zm8.02-1.028h4.968c.322 0 .64.08.925.232.286.153.531.374.716.645a2.108 2.108 0 0 1 .242 1.883l-2.36 7.2c-.288.813-.48 1.354-1.884 1.354-2.59 0-5.39-1.06-7.504-1.66"
               />
             </svg>
-            <span className="text-sm ml-3">{likes.length+liked} people like it</span>
+            <span className="text-sm ml-3">{like} people like it</span>
           </div>
           <span className="text-sm"> comments</span>
         </div>
