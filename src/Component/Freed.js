@@ -2,12 +2,14 @@ import React, { useEffect } from 'react'
 import Share from './Share'
 import Post from './Post'
 
-import {useState} from 'react';
+import {useState,useContext} from 'react';
 import axios from 'axios'
 import Registration from './LoginPage'
+import {AuthContext} from '../Context/AuthContext'
 function Freed({userId}) {
   const [allpost,SetallPost]=useState([])
   //Here , I have to render all the posts according to newest
+ 
   const id='651e699c40ed0e3942b1af74';
   useEffect(()=>{
     const getPost=async()=>{
@@ -19,11 +21,11 @@ function Freed({userId}) {
        console.log("All post is "+allpost+" and user id is "+userId);
     }
     getPost();
-  },[])
+  },[userId])
   return (
     <>
         <div>
-            <Share/>
+            {!userId&&<Share/>}
             
             {allpost.map((item)=>{
               return <Post key={item._id} post={item}/>

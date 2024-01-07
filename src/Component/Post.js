@@ -45,7 +45,7 @@ console.log("Uploded image full url "+post.img)
           <div className="flex items-center">
            
             <Link to={`/profile/${userId}`}>
-              <img src={userdata.profile?userdata.profile:imgpr} className="w-8 mr-3 bg-white h-8 profileImg rounded-full" alt="" />
+              <img src={post.img? `http://localhost:8000/${post.img}` : imgpr} className="w-8 mr-3 bg-white h-8 profileImg rounded-full" alt="" />
             </Link>
             <strong className="mr-4">{userdata.username}</strong>
             <span className="text-sm"></span>

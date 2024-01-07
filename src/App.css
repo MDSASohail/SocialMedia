@@ -147,3 +147,15 @@ input::placeholder
 {
   background-color: #fcbf49;
 }
+
+.followBTN{
+  transition: background-color,color 0.3s;
+  font-weight: 400;
+  
+}
+.followBTN:hover
+{
+  background-color: #d62828;
+  color:white
+
+}

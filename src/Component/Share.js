@@ -29,7 +29,9 @@ function Share() {
   headers: {
     'Content-Type': 'multipart/form-data',
   },
+  
 });
+window.location.reload();
           } catch (error) {
             console.log("Error in file uploding")
           }
