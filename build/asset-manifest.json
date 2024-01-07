@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/MDSASohail/LemaSocial/static/css/main.7be67ca2.css",
+    "main.js": "/MDSASohail/LemaSocial/static/js/main.02aaf8aa.js",
+    "static/js/787.d7317416.chunk.js": "/MDSASohail/LemaSocial/static/js/787.d7317416.chunk.js",
+    "static/media/Sohail.png": "/MDSASohail/LemaSocial/static/media/Sohail.796bd3f5677068739272.png",
+    "static/media/Cover.jfif": "/MDSASohail/LemaSocial/static/media/Cover.49a74074f8dc917283a3.jfif",
+    "static/media/Ava.jfif": "/MDSASohail/LemaSocial/static/media/Ava.a7ec47cfcc1f67193077.jfif",
+    "index.html": "/MDSASohail/LemaSocial/index.html",
+    "main.7be67ca2.css.map": "/MDSASohail/LemaSocial/static/css/main.7be67ca2.css.map",
+    "main.02aaf8aa.js.map": "/MDSASohail/LemaSocial/static/js/main.02aaf8aa.js.map",
+    "787.d7317416.chunk.js.map": "/MDSASohail/LemaSocial/static/js/787.d7317416.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7be67ca2.css",
+    "static/js/main.02aaf8aa.js"
+  ]
+}
