@@ -99,7 +99,7 @@ function Navbar() {
           <div className="profile rounded-full overflow-hidden ">
             <Link to={`/profile/${user._id}`}>
             
-            <img src={img} className="w-10 profileImg h-10 bg-cover" alt="" />
+            <img src={user?"http://localhost:8000/"+user.profile:img}className="w-10 profileImg h-10 bg-cover" alt="" />
             </Link>
           </div>
         </div>

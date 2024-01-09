@@ -6,11 +6,12 @@ import Profile from '../Component/Profile'
 // import RightSideBar from '../Component/RightSideBar'
 import LeftSideBar from '../Component/LeftSideBar'
 import {Route,Routes } from 'react-router-dom'
-
+import { AuthContextProvider } from '../Context/AuthContext'
 function Home() {
   
   return (
     <div >
+      
       <Navbar/>
       <div className='flex   base'>
         <div className='leftSideBar'>
@@ -26,6 +27,7 @@ function Home() {
         <RightSideBar/>
         </div>
       </div>
+      
     </div>
   )
 }
