@@ -12,7 +12,7 @@ function Home() {
   return (
     <div >
       
-      <Navbar/>
+      
       <div className='flex   base'>
         <div className='leftSideBar'>
            <LeftSideBar/>

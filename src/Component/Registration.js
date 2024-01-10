@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useRef, useState } from 'react'
-import {useNavigate  } from 'react-router-dom';
+import {Link, useNavigate  } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
 
 function Registration() {
@@ -76,6 +76,9 @@ function Registration() {
               </div>
               <div>
                 <button className='font-bold  p-3 rounded-lg feedBtn ' type='submit'>Registration</button>
+              </div>
+              <div className='transition-color hover:text-white'>
+                 <Link to={'/login'}>Already have an account. Login</Link>
               </div>
           </form>
        </div>

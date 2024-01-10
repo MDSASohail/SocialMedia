@@ -53,7 +53,7 @@ function Profile()
                <Right/>
               </div>
           </div> */}
-          <Navbar/>
+          
           <div className='flex   base'>
         <div className='leftSideBar'>
            <LeftSideBar/>

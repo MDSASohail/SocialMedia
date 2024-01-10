@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/LemaSocial/static/css/main.7be67ca2.css",
-    "main.js": "/LemaSocial/static/js/main.995c8f1d.js",
-    "static/js/787.d7317416.chunk.js": "/LemaSocial/static/js/787.d7317416.chunk.js",
-    "static/media/Sohail.png": "/LemaSocial/static/media/Sohail.796bd3f5677068739272.png",
-    "static/media/Cover.jfif": "/LemaSocial/static/media/Cover.49a74074f8dc917283a3.jfif",
-    "static/media/Ava.jfif": "/LemaSocial/static/media/Ava.a7ec47cfcc1f67193077.jfif",
-    "index.html": "/LemaSocial/index.html",
-    "main.7be67ca2.css.map": "/LemaSocial/static/css/main.7be67ca2.css.map",
-    "main.995c8f1d.js.map": "/LemaSocial/static/js/main.995c8f1d.js.map",
-    "787.d7317416.chunk.js.map": "/LemaSocial/static/js/787.d7317416.chunk.js.map"
+    "main.css": "/SocialMedia/static/css/main.d1f0fbb9.css",
+    "main.js": "/SocialMedia/static/js/main.640ef003.js",
+    "static/js/787.d7317416.chunk.js": "/SocialMedia/static/js/787.d7317416.chunk.js",
+    "static/media/Sohail.png": "/SocialMedia/static/media/Sohail.796bd3f5677068739272.png",
+    "static/media/Cover.jfif": "/SocialMedia/static/media/Cover.49a74074f8dc917283a3.jfif",
+    "static/media/Ava.jfif": "/SocialMedia/static/media/Ava.a7ec47cfcc1f67193077.jfif",
+    "index.html": "/SocialMedia/index.html",
+    "main.d1f0fbb9.css.map": "/SocialMedia/static/css/main.d1f0fbb9.css.map",
+    "main.640ef003.js.map": "/SocialMedia/static/js/main.640ef003.js.map",
+    "787.d7317416.chunk.js.map": "/SocialMedia/static/js/787.d7317416.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7be67ca2.css",
-    "static/js/main.995c8f1d.js"
+    "static/css/main.d1f0fbb9.css",
+    "static/js/main.640ef003.js"
   ]
 }

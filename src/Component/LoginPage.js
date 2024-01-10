@@ -1,6 +1,7 @@
 import {useContext, useRef} from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import { APICall } from './Apicall';
+import { Link } from 'react-router-dom';
 
 function LoginPage() {
   const username=useRef();
@@ -26,10 +27,17 @@ function LoginPage() {
                 <input required ref={password}  name='password' className='bg-transparent outline-none p-2 m-2 text-black text-xl' type="password" placeholder='Enter password' />
               </div>
               <div>
-                <button className='font-bold  p-3 rounded-lg feedBtnt'  > {isFetching?"Loading":"Login"}</button>
+                <button className='font-bold  p-3 rounded-lg feedBtnt transition-color hover:text-white'  > {isFetching?"Loading":"Login"}</button>
               </div>
               <div>{error?"Username or Password is Wrong":""}</div>
+              <div className='transition-color hover:text-white'>
+             <Link to={'/register'}>
+             Create an account
+             </Link>
+          </div>
           </form>
+
+          
        </div>
     </>
   )
