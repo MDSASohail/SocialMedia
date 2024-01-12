@@ -12,6 +12,7 @@ export const APICall=async(userCredential,dispatch)=>{
         const data=await axios.post('http://localhost:8000/auth/login',userCredential);
         
         dispatch({type:"LoginSuccess",payload:data.data})
+        // localStorage.setItem('user',data.data);
         console.log("In API Call after await "+data.data.username)
     } catch (error) {
         dispatch({type:"LoginFail"})

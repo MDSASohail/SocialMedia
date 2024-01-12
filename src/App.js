@@ -9,6 +9,7 @@ import Practice from './Context/Practice';
 import { useContext, useEffect } from 'react';
 import { AuthContext } from './Context/AuthContext';
 import Navbar from './Component/Navbar';
+import MessengerHome from './Pages/MessengerHome'
 function App() {
   const {user}=useContext(AuthContext)
   console.log("In app user is "+user)
@@ -31,6 +32,7 @@ function App() {
         <Route path='/login' element={user?<Navigate to={'/'}/>:<Login/>}/>
         <Route path='/register' element={<Registrarion/>}/>
         <Route path='/profile/:username' element={user?<Profile/>:<Navigate to={'/login'}/>}/>
+        <Route path='/messenger/:userId' element={user?<MessengerHome/>:<Navigate to={'/login'}/>}/>
      </Routes>
      
     </>

@@ -4,10 +4,13 @@ import {AuthContext} from '../Context/AuthContext';
 import {Link} from 'react-router-dom'
 function Navbar() {
   const {user}=useContext(AuthContext);
+  
   return (
     <>
       <div className="navbar sticky top-0 flex items-center px-4 z-10">
-        <div className="left  text-2xl font-bold">Sohail</div>
+        <Link to={'/'}>
+        <div className="left cursor-pointer  text-2xl font-bold">Sohail</div>
+        </Link>
 
         <div className="middle  ">
           <div className="flex items-center   w-full">
@@ -78,6 +81,7 @@ function Navbar() {
               <span className="absolute rounded-full text-sm w-4 h-4   -top-2 p-0 -right-1 navbarMsg flex items-center justify-center  ">1</span>
             </div>
             <div className="ml-3 relative cursor-pointer">
+              <Link to={'/messenger/userMessage'}>
               <svg
                 className="w-6 h-6 text-white "
                 aria-hidden="true"
@@ -94,6 +98,7 @@ function Navbar() {
                 />
               </svg>
               <span className="absolute rounded-full text-sm w-4 h-4   -top-2 p-0 -right-1 navbarMsg flex items-center justify-center  ">1</span>
+              </Link>
             </div>
           </div>
           <div className="profile rounded-full overflow-hidden ">
@@ -102,6 +107,7 @@ function Navbar() {
             <img src={user?"http://localhost:8000/"+user.profile:img}className="w-10 profileImg h-10 bg-cover" alt="" />
             </Link>
           </div>
+          <div className="cursor-pointer" onClick={()=>{ localStorage.removeItem("user");window.location.reload();}}>Logout</div>
         </div>
       </div>
     </>

@@ -159,3 +159,51 @@ input::placeholder
   color:white
 
 }
+
+
+
+.messengerleftSidebar
+{
+     
+     border-right: 1px solid gray;
+     background-color: #fcbf49;
+     
+     
+}
+
+.messengerrightSidebar
+{
+    height: 90vh;
+    border-left: 1px solid gray;
+    background-color: #fcbf49;
+    
+}
+
+
+.hoverEffect:hover
+{
+    background-color: #eae2b7;
+}
+
+.bg1{
+    background-color: #eae2b7;
+}
+
+.bg2{
+    background-color: #f8eba2;
+}
+
+
+.hidescrollBar::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.hidescrollBar::-webkit-scrollbar-thumb {
+    background: #eae2b7;
+}
+
+.maingrid
+{
+    grid-template-columns: 20% 60% 20%;
+}
