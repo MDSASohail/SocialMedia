@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react';
 import axios from 'axios'
 import img from '../Images/Sohail.png'
 function MessengerLeftSidebar({con,user}) {
-  console.log("In message leftside conversation is "+JSON.stringify(con.members[1]))
+  // console.log("In message leftside conversation is "+JSON.stringify(con.members[1]))
   const [member,setMember]=useState([]);
   
   const memberId=con.members.find((id)=>id!=user._id);

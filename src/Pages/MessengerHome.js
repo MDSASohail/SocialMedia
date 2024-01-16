@@ -9,7 +9,7 @@ function MessengerHome() {
 
   const {user}=useContext(AuthContext);
   const [conversation,setConversation]=useState([]);
-  const [currentChat,setCurrentChat]=useState({"currentChat._id":"12"});
+  const [currentChat,setCurrentChat]=useState([{"currentChat._id":"12"}]);
   const [messages,setMessages]=useState([]);
   const [arrivalMsg,setArrivalMsg]=useState(null)
   const text=useRef();
@@ -30,24 +30,25 @@ function MessengerHome() {
     })
   },[])
 
-  useEffect(()=>{
-    console.log("All messages before push ");
-    console.log("All messages before push ");
-    console.log("All messages before push ");
-    console.log("All messages before push ");
-    console.log(messages)
-    arrivalMsg && currentChat?.members.includes(arrivalMsg.senderId)&&setMessages((pre)=>[...pre,arrivalMsg]);
-    console.log(messages)
-  },[arrivalMsg,currentChat])
+  useEffect(() => {
+    console.log("ArrivalMsg effect triggered");
+    console.log("arrivalMsg:", arrivalMsg);
+    console.log("currentChat:", currentChat);
+    arrivalMsg && currentChat?.members.includes(arrivalMsg.senderId) && setMessages((prev) => [...prev, arrivalMsg]);
+
+ 
+    console.log("FinnalMSG ",messages)
+  }, [arrivalMsg, currentChat]);
+  
 
 
   useEffect(()=>{
     const  getAllConversation=async ()=>{
       try{
               const con= await axios.get(`http://localhost:8000/conversation/${user._id}`);
-              console.log("Login user id is "+JSON.stringify(user))
+              // console.log("Login user id is "+JSON.stringify(user))
               setConversation(con.data);
-              console.log("Login user all conversation is "+JSON.stringify(con.data));
+              // console.log("Login user all conversation is "+JSON.stringify(con.data));
       }catch(err)
       {
          console.log("Error in getting conversation "+err.message)
@@ -61,8 +62,8 @@ function MessengerHome() {
             const allmessagesOfCurrentChat=async ()=>{
               const m= await axios.get(`http://localhost:8000/message/${currentChat._id}`);
               setMessages(m.data);
-              console.log("Current Particular conversation is messages is "+JSON.stringify(m.data));
-              console.log("Current chat conversation is "+JSON.stringify(currentChat))
+              // console.log("Current Particular conversation is messages is "+JSON.stringify(m.data));
+              // console.log("Current chat conversation is "+JSON.stringify(currentChat))
             }
             allmessagesOfCurrentChat();
   },[currentChat]);
@@ -75,13 +76,13 @@ useEffect(()=>{
 useEffect(()=>{
   socket.current.emit("addUser",user._id);
   socket.current.on("getUsers",users=>{
-    console.log(users)
-    console.log("Getted users are above")
+    // console.log(users)
+    // console.log("Getted users are above")
   })
   
 },[user])
 
-console.log(socket)
+// console.log(socket)
  async function handleSubmit(e)
   {
      e.preventDefault();
@@ -91,7 +92,7 @@ console.log(socket)
         text:currentText
      }
  const receiverId=currentChat.members.find((member)=>member!=user._id);
- console.log("Receiver id is "+receiverId)
+//  console.log("Receiver id is "+receiverId)
  socket.current.emit("sendMessage",{
   senderId:user._id,
   receiverId,
@@ -105,7 +106,7 @@ console.log(socket)
       console.log("Error in sending messages "+error.message)
      }
   }
-  console.log(user)
+  // console.log(user)
   return (
     <>
        
