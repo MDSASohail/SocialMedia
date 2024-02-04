@@ -19,7 +19,27 @@ function MessengerHome() {
   console.log("Above are all messsaag")
   const socket=useRef()
   useEffect(()=>{
-    socket.current=io("ws://localhost:8001");
+    
+    socket.current = io("wss://socket-for-social-media.vercel.app:8001");
+    // socket.current=io("ws://localhost:8001");
+    console.log("Socket is ",socket.current)
+    
+    // try {
+    //   // socket.current = io("wss://socket-for-social-media.vercel.app:8001");
+    //   socket.current=io("ws://localhost:8001");
+    //   console.log("Socket is ",socket.current)
+    // } catch (error) {
+    //   console.log(error)
+    // }
+//     socket.current.socket.onopen = function(event) {
+//       console.log("WebSocket is connected!");
+//       // You can perform additional actions here upon successful connection
+//   };
+//   socket.current.socket.onerror = function(error) {
+//     console.error("WebSocket error:", error);
+// };
+    // origin: "https://mdsasohail.github.io",         origin:'http://localhost:3000',
+    // https://socket-for-social-media.vercel.app/
     console.log("In setArrivalMSG")
     socket.current.on("getMessage",data=>{
               setArrivalMsg({
@@ -29,6 +49,14 @@ function MessengerHome() {
               })
     })
   },[])
+//   socket.current.onopen = function(event) {
+//     console.log("WebSocket is connected!");
+//     // You can perform additional actions here upon successful connection
+// };
+
+// socket.current.onerror = function(error) {
+//     console.error("WebSocket error:", error);
+// };
 
   useEffect(() => {
     console.log("ArrivalMsg effect triggered");
@@ -45,7 +73,7 @@ function MessengerHome() {
   useEffect(()=>{
     const  getAllConversation=async ()=>{
       try{
-              const con= await axios.get(`http://localhost:8000/conversation/${user._id}`);
+              const con= await axios.get(`https://rest-api-gules.vercel.app/conversation/${user._id}`);
               // console.log("Login user id is "+JSON.stringify(user))
               setConversation(con.data);
               // console.log("Login user all conversation is "+JSON.stringify(con.data));
@@ -60,7 +88,7 @@ function MessengerHome() {
 
   useEffect(()=>{
             const allmessagesOfCurrentChat=async ()=>{
-              const m= await axios.get(`http://localhost:8000/message/${currentChat._id}`);
+              const m= await axios.get(`https://rest-api-gules.vercel.app/message/${currentChat._id}`);
               setMessages(m.data);
               // console.log("Current Particular conversation is messages is "+JSON.stringify(m.data));
               // console.log("Current chat conversation is "+JSON.stringify(currentChat))
@@ -92,15 +120,24 @@ useEffect(()=>{
         text:currentText
      }
  const receiverId=currentChat.members.find((member)=>member!=user._id);
-//  console.log("Receiver id is "+receiverId)
+ console.log("Receiver id is "+receiverId)
  socket.current.emit("sendMessage",{
   senderId:user._id,
   receiverId,
   text:currentText
  })
+
+ setMessages((pre)=>[...pre,{
+  senderId:user._id,
+  receiverId,
+  text:currentText
+ }])
+ console.log("Current text is ",currentText)
+ 
      try {
-             const saved=await axios.post(`http://localhost:8000/message/`,newMessage);
-             console.log("Saved data is "+saved.data);
+             const saved=await axios.post(`https://rest-api-gules.vercel.app/message/`,newMessage);
+             console.log("Messages after saving is  ",messages);
+             
              setCurrentText("");
      } catch (error) {
       console.log("Error in sending messages "+error.message)
@@ -144,7 +181,7 @@ useEffect(()=>{
           <RightSidebar/>
           </div>
         </div>
-        
+         
        </div>
     </>
   )

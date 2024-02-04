@@ -8,8 +8,8 @@ export const APICall=async(userCredential,dispatch)=>{
    
     dispatch({type:"LoginStart"});
     try {
-        console.log("In API Call"+userCredential)
-        const data=await axios.post('http://localhost:8000/auth/login',userCredential);
+        // console.log("In API Call"+userCredential)
+        const data=await axios.post('https://rest-api-gules.vercel.app/auth/login',userCredential);
         
         dispatch({type:"LoginSuccess",payload:data.data})
         // localStorage.setItem('user',data.data);

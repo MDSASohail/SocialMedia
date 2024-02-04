@@ -14,7 +14,7 @@ function Post({post}) {
   console.log("Like di s "+like)
   useEffect(()=>{
     const getuserName=async ()=>{
-      const data=await axios.get(`http://localhost:8000/user/get/${post.userId}`);
+      const data=await axios.get(`https://rest-api-gules.vercel.app/user/get/${post.userId}`);
       console.log("data is "+data.data.username);
       const u=data.data;
       setUserdata(u);
@@ -26,7 +26,7 @@ console.log("Uploded image full url "+post.img)
  async function LikedFun()
   {
               try {
-                await axios.put(`http://localhost:8000/post/like/${post._id}`,{userId:user._id});
+                await axios.put(`https://rest-api-gules.vercel.app/post/like/${post._id}`,{userId:user._id});
                 setLike(isLiked?like+1:like-1);
                 setIsLike(!isLiked);
               } catch (error) {
@@ -45,7 +45,7 @@ console.log("Uploded image full url "+post.img)
           <div className="flex items-center">
            
             <Link to={`/profile/${userId}`}>
-              <img src={post.img? `http://localhost:8000/${post.img}` : imgpr} className="w-8 mr-3 bg-white h-8 profileImg rounded-full" alt="" />
+              <img src={post.img? `https://rest-api-gules.vercel.app/${post.img}` : imgpr} className="w-8 mr-3 bg-white h-8 profileImg rounded-full" alt="" />
             </Link>
             <strong className="mr-4">{userdata.username}</strong>
             <span className="text-sm"></span>
@@ -64,7 +64,7 @@ console.log("Uploded image full url "+post.img)
         </div>
         <div className="mt-2">{desc}</div>
         <div className="my-2">
-          <img className="h-96 mx-auto " src={post.img? `http://localhost:8000/${post.img}` : imgpr} alt="" />
+          <img className="h-96 mx-auto " src={post.img? `https://rest-api-gules.vercel.app/${post.img}` : imgpr} alt="" />
         </div>
 
         <div className="flex justify-between mt-3 items-center">

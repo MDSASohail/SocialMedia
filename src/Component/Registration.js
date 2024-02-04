@@ -35,7 +35,7 @@ function Registration() {
 
          
                  try{
-                  const imgName=await axios.post('http://localhost:8000/upload',dataForm, {
+                  const imgName=await axios.post('https://rest-api-gules.vercel.app/upload',dataForm, {
                     headers: {
                       'Content-Type': 'multipart/form-data',
                     },
@@ -44,7 +44,7 @@ function Registration() {
                     
                   });
                   user.profile=`Images/${imgName.data.img}`;
-                const data=  await axios.post("http://localhost:8000/auth/register",user)
+                const data=  await axios.post("https://rest-api-gules.vercel.app/auth/register",user)
                   console.log("register success")
                   dispatch({type:"LoginSuccess",payload:data.data})
                   navigate('/')

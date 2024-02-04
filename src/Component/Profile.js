@@ -17,7 +17,7 @@ function Profile()
     useEffect(()=>{
         const getProfileDetail=async()=>{
           try {
-            const data=await axios.get('http://localhost:8000/user/get/'+userId);
+            const data=await axios.get('https://rest-api-gules.vercel.app/user/get/'+userId);
             setProfileData(data.data);
           } catch (error) {
             console.log(error)
@@ -61,10 +61,10 @@ function Profile()
         <div className="freed">
         <div className="border-2 border-green-400  ">
               <div className='h-60'>
-                  <img src={profileData.cover?`http://localhost:8000/${profileData.cover}`:cover} className='w-full h-full'/>
+                  <img src={profileData.cover?`https://rest-api-gules.vercel.app/${profileData.cover}`:cover} className='w-full h-full'/>
               </div>
               <div className='relative border-2 h-40 border-amber-500'>
-                <img src={profileData.profile?`http://localhost:8000/${profileData.profile}`:Ava} className='absolute w-32 h-32 left-1/2 -top-10 -translate-x-1/2    rounded-full'/>
+                <img src={profileData.profile?`https://rest-api-gules.vercel.app/${profileData.profile}`:Ava} className='absolute w-32 h-32 left-1/2 -top-10 -translate-x-1/2    rounded-full'/>
                 <strong className='absolute text-2xl top-24 left-1/2 -translate-x-1/2'>{profileData.username}</strong>
               </div>
               

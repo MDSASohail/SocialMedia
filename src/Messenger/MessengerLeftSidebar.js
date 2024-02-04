@@ -9,7 +9,7 @@ function MessengerLeftSidebar({con,user}) {
   useEffect(()=>{
     const getUser=async()=>{
               try {
-                const user=await axios.get(`http://localhost:8000/user/get/${memberId}`);
+                const user=await axios.get(`https://rest-api-gules.vercel.app/user/get/${memberId}`);
                       setMember(user.data);
               } catch (error) {
                 console.log("Error in message left "+error.message)
@@ -23,7 +23,7 @@ function MessengerLeftSidebar({con,user}) {
       <div  >
         
         <div className='flex hoverEffect rounded-md cursor-pointer p-2 mt-2 items-center justify-around'>
-            <img className='w-14 h-14 object-cover  rounded-full' src={member.profile?`http://localhost:8000/${member.profile}`:img} alt="" />
+            <img className='w-14 h-14 object-cover  rounded-full' src={member.profile?`https://rest-api-gules.vercel.app/${member.profile}`:img} alt="" />
             <p><strong>{member.username}</strong></p>
         </div>
         
